@@ -1,18 +1,19 @@
-version: '3'
+version: "3"
 services:
   mongo:
-    image: mongo:3.6
+    image: "mongo"
+    ports:
+      - 27017:27017
   web:
     build: .
     ports:
-     - "8080:8080"
+      - "3000:3001"
     environment:
-     - MONGODB_URI=mongodb://mongo:27017/test 
+      - MONGODB_URI=mongodb://mongo:27017/test
     links:
-     - mongo 
-    depends_on: 
-     - mongo 
+      - mongo
+    depends_on:
+      - mongo
     volumes:
-     - .:/starter
-     - /starter/node_modules
-     
+      - .:/starter
+      - /starter/node_modules
